@@ -1,4 +1,4 @@
-import './App.css';
+import './style/app.scss';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Landing } from './pages';
 import Wrapper from './wrapper';

@@ -19,10 +19,18 @@ const Landing = () => {
         className="mySwiper"
         slideToClickedSlide={true}
       >
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
+        <SwiperSlide onClick={() => console.log('here')}>
+          <img src="assets/1.jpg" alt="1" className='slide-bg' />
+        </SwiperSlide>
+        <SwiperSlide onClick={() => console.log('here')}>
+          <img src="assets/2.JPG" alt="2" className='slide-bg' />
+        </SwiperSlide>
+        <SwiperSlide onClick={() => console.log('here')}>
+          <img src="assets/3.jpg" alt="3" className='slide-bg' />
+        </SwiperSlide>
+        <SwiperSlide onClick={() => console.log('here')}>
+          <img src="assets/4.jpg" alt="4" className='slide-bg' />
+        </SwiperSlide>
       </Swiper>
     </>
   )

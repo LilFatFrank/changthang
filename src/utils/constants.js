@@ -9,14 +9,14 @@ export const SLIDES = [
     {
         key: 1,
         title: 'Highest Road on the Planet',
-        subTitle: '9 days - 8 nights',
+        subTitle: '8 days - 7 nights',
         image: 'assets/2.jpg',
         link: 'Conquer the formidable'
     },
     {
         key: 2,
         title: 'Raw Changthang',
-        subTitle: '9 days - 8 nights',
+        subTitle: '10 days - 9 nights',
         image: 'assets/3.jpg',
         link: 'As raw as it gets'
     },

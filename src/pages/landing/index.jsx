@@ -5,8 +5,13 @@ import 'swiper/css/pagination'
 import './landing.scss'
 import { SLIDES } from '../../utils'
 import { Sprite } from '../../components'
+import { Lazy } from 'swiper'
 
 const Landing = () => {
+  const audio = new Audio('assets/slide.mp3')
+
+  const playAudio = () => audio.play()
+
   return (
     <div className="landing">
       <Swiper
@@ -16,9 +21,10 @@ const Landing = () => {
         grabCursor={true}
         className="mySwiper"
         slideToClickedSlide={true}
+        onActiveIndexChange={playAudio}
+        modules={[Lazy]}
       >
         {SLIDES.map((slide) => (
-          <>
             <SwiperSlide key={slide.key}>
               <img src={slide.image} alt={slide.key} className="slide-bg" />
               <div className="tour">
@@ -32,7 +38,6 @@ const Landing = () => {
                 <Sprite id="top-right-arrow" width={16} height={16} />
               </a>
             </SwiperSlide>
-          </>
         ))}
       </Swiper>
     </div>

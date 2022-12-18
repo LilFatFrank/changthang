@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/pagination'
@@ -8,9 +8,10 @@ import { Sprite } from '../../components'
 import { Lazy } from 'swiper'
 
 const Landing = () => {
-  const audio = new Audio('assets/slide.mp3')
 
-  const playAudio = () => audio.play()
+  const audio = useRef(null)
+
+  const playAudio = () => audio.current.play()
 
   return (
     <div className="landing">
@@ -40,6 +41,7 @@ const Landing = () => {
             </SwiperSlide>
         ))}
       </Swiper>
+      <audio src='assets/slide.mp3' ref={audio}></audio>
     </div>
   )
 }

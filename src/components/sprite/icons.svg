@@ -18,4 +18,14 @@
     />
     </symbol>
 
+    <symbol viewBox="0 0 12 7" fill="none" id="chevron-down">
+      <path
+        d="M10.375 1.25L6 5.625L1.625 1.25"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </symbol>
+
 </svg>

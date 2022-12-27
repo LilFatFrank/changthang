@@ -1,0 +1,173 @@
+.container {
+  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
+  background-repeat: no-repeat;
+  background-attachment: fixed !important;
+  background-size: 100% !important;
+  background-position: center top !important;
+  padding-top: 50%;
+  .trip {
+    .scroll-label {
+      font-family: GilroySemiBold;
+      text-transform: uppercase;
+      color: var(--white);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .content {
+      padding: 60px;
+      margin-top: 20%;
+      .sticky-section {
+        display: flex;
+        align-items: flex-start;
+        flex: 1 1 100%;
+        margin-bottom: 60px;
+        .heading {
+          font-family: GilroySemiBold;
+          margin-bottom: 16px;
+          position: sticky;
+          top: 60px;
+          flex: 1 1 50%;
+        }
+        .overview {
+          font-family: GilroyMedium;
+          font-size: 20px;
+          line-height: 32px;
+          flex: 1 1 50%;
+        }
+      }
+      .carousel {
+        height: 350px;
+        position: relative;
+        overflow: hidden;
+        .photobanner {
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          overflow: hidden;
+          white-space: nowrap;
+          animation: bannermove 50s linear infinite;
+          img {
+            margin: 0 0.5em;
+            width: 200px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 8px solid var(--primary-light);
+          }
+        }
+      }
+      .itinerary {
+        margin: 0 0 90px;
+        font-family: GilroyBold;
+        line-height: 48px;
+        text-align: center;
+      }
+      .timeline-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding-bottom: 180px;
+        .vertical-scrollable-timeline {
+          width: 60%;
+          list-style-type: none;
+          position: relative;
+          .list-progress {
+            width: 8px;
+            height: 100%;
+            background-color: var(--primary);
+            position: absolute;
+            left: 48px;
+            top: 0;
+            overflow: hidden;
+            .inner {
+              position: absolute;
+              right: 0;
+              bottom: 0;
+              height: 100%;
+              background-color: var(--timeline-gray);
+              width: 100%;
+            }
+          }
+          .item {
+            position: relative;
+            padding: 35px 0px 125px 158px;
+            &:last-child {
+              margin-bottom: 0;
+            }
+            .detail {
+              line-height: 1.5;
+              color: var(--black);
+              font-size: 18px;
+              &:last-child {
+                margin-bottom: 0;
+              }
+            }
+            .icon-holder {
+              position: absolute;
+              left: 0;
+              top: 0;
+              width: 104px;
+              height: 104px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              background-color: var(--timeline-gray);
+              border-radius: 50%;
+              z-index: 1;
+              transition: 0.4s all;
+              &::before {
+                content: '';
+                width: 80px;
+                height: 80px;
+                border: 4px solid var(--white);
+                position: absolute;
+                background-color: var(--timeline-gray);
+                border-radius: 50%;
+                z-index: -1;
+                transition: 0.4s all;
+              }
+              .icon {
+                color: var(--white);
+              }
+            }
+            &::before {
+              content: '';
+              position: absolute;
+              height: 100%;
+              width: 8px;
+              background-color: transparent;
+              left: 48px;
+              z-index: 0;
+            }
+            &:last-child {
+              &::before {
+                width: 58px;
+                left: 48px;
+                background-color: var(--white);
+              }
+            }
+            &.active {
+              .icon-holder {
+                background-color: var(--primary);
+                &::before {
+                  background-color: var(--primary);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes bannermove {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-50%, 0);
+  }
+}

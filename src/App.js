@@ -1,15 +1,15 @@
 import './style/app.scss';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes as Switch } from 'react-router-dom';
 import { Landing } from './pages';
-import Wrapper from './wrapper';
+import Routes from './routes';
 
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
+      <Switch>
         <Route path='/' element={<Landing />} />
-        <Route path='/*' element={<Wrapper />} />
-      </Routes>
+        <Route path='/*' element={<Routes />} />
+      </Switch>
     </BrowserRouter>
   );
 }

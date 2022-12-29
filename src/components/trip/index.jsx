@@ -16,42 +16,55 @@ const Trip = ({
   const location = useLocation()
 
   useEffect(() => {
+    const handleContextmenu = (e) => {
+      e.preventDefault()
+    }
+    document.addEventListener('contextmenu', handleContextmenu)
     const content = document.getElementById('content').offsetTop
     window.onscroll = function () {
       if (window.pageYOffset > 0) {
-        const opacity = window.pageYOffset / content + 0.1
+        let opacity = window.pageYOffset / content
+        let headerOpacity = content / window.pageYOffset
+        opacity = opacity > 0.9 ? 0.9 : opacity
         document.getElementById('container').style.background =
           'linear-gradient(rgba(255, 255, 255, ' +
           opacity +
           '), rgba(255, 255, 255, ' +
           opacity +
           `)), url(${mapImg}) no-repeat`
+        console.log(document.getElementById('scroll-label'))
+        document.getElementById('scroll-label').style.opacity = headerOpacity
       }
     }
+    var timeline = $('#vertical-scrollable-timeline li')
     window.addEventListener('scroll', function () {
-      function isScrollIntoView(elem, index) {
-        var docViewTop = $(window).scrollTop()
-        var docViewBottom = docViewTop + $(window).height()
-        var elemTop = $(elem).offset().top
-        var elemBottom = elemTop + $(window).height() * 0.5
-        if (elemBottom <= docViewBottom && elemTop >= docViewTop) {
-          $(elem).addClass('active')
-        }
-        if (!(elemBottom <= docViewBottom)) {
-          $(elem).removeClass('active')
-        }
-        var MainTimelineContainer = $('#vertical-scrollable-timeline')[0]
-        var MainTimelineContainerBottom =
-          MainTimelineContainer.getBoundingClientRect().bottom -
-          $(window).height() * 0.5
-        $(MainTimelineContainer)
-          .find('.inner')
-          .css('height', MainTimelineContainerBottom + 'px')
-      }
-      var timeline = $('#vertical-scrollable-timeline li')
       Array.from(timeline).forEach(isScrollIntoView)
     })
+    return function cleanup() {
+      document.removeEventListener('contextmenu', handleContextmenu)
+      window.removeEventListener('scroll', isScrollIntoView)
+    }
   }, [])
+
+  function isScrollIntoView(elem) {
+    var docViewTop = $(window).scrollTop()
+    var docViewBottom = docViewTop + $(window).height()
+    var elemTop = $(elem).offset().top
+    var elemBottom = elemTop + $(window).height() * 0.5
+    if (elemBottom <= docViewBottom && elemTop >= docViewTop) {
+      $(elem).addClass('active')
+    }
+    if (!(elemBottom <= docViewBottom)) {
+      $(elem).removeClass('active')
+    }
+    var MainTimelineContainer = $('#vertical-scrollable-timeline')[0]
+    var MainTimelineContainerBottom =
+      MainTimelineContainer.getBoundingClientRect().bottom -
+      $(window).height() * 0.5
+    $(MainTimelineContainer)
+      .find('.inner')
+      .css('height', MainTimelineContainerBottom + 'px')
+  }
 
   const ListContent = ({ arr }) => (
     <>
@@ -75,7 +88,6 @@ const Trip = ({
   )
 
   const carousel = () => {
-    console.log(location)
     const images = []
     for (let i = 1; i <= carouselImageCount; i++) {
       images.push(
@@ -104,10 +116,10 @@ const Trip = ({
       className="container"
       style={{ backgroundImage: `url(${mapImg})` }}
     >
+      <h1 className="scroll-label" id="scroll-label">
+        Scroll <Sprite id={'chevron-down'} width={22} height={22} />
+      </h1>
       <div className="trip">
-        <h1 className="scroll-label">
-          Scroll <Sprite id={'chevron-down'} width={22} height={22} />
-        </h1>
         <div id="content" className="content">
           <div className="sticky-section">
             <h1 className="heading">Overview</h1>
@@ -119,15 +131,15 @@ const Trip = ({
               <ListContent arr={highlights} />
             </ul>
           </div>
+          <h1 className="itinerary">Exquisite Places, Happy Faces</h1>
+          <div className="carousel">
+            <div className="photobanner">{carousel()}</div>
+          </div>
           <div className="sticky-section">
             <h1 className="heading">Inclusions</h1>
             <ul className="overview">
               <ListContent arr={inclusions} />
             </ul>
-          </div>
-          <h1 className="itinerary">Exquisite Places, Happy Faces</h1>
-          <div className="carousel">
-            <div className="photobanner">{carousel()}</div>
           </div>
           <div className="sticky-section">
             <h1 className="heading">Exclusions</h1>

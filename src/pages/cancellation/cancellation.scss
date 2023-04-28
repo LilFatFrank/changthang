@@ -1,0 +1,21 @@
+.cancellation {
+  padding: 150px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  gap: 40px;
+  animation: fadeIn 1s;
+  * {
+    line-height: 20px;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

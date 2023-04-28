@@ -16,11 +16,7 @@ const Trip = ({
   const location = useLocation()
 
   useEffect(() => {
-    const handleContextmenu = (e) => {
-      e.preventDefault()
-    }
-    document.addEventListener('contextmenu', handleContextmenu)
-    const content = document.getElementById('content').offsetTop
+    /* const content = document.getElementById('content').offsetTop
     window.onscroll = function () {
       if (window.pageYOffset > 0) {
         let opacity = window.pageYOffset / content
@@ -35,16 +31,15 @@ const Trip = ({
         console.log(document.getElementById('scroll-label'))
         document.getElementById('scroll-label').style.opacity = headerOpacity
       }
-    }
+    } */
     var timeline = $('#vertical-scrollable-timeline li')
     window.addEventListener('scroll', function () {
       Array.from(timeline).forEach(isScrollIntoView)
     })
     return function cleanup() {
-      document.removeEventListener('contextmenu', handleContextmenu)
       window.removeEventListener('scroll', isScrollIntoView)
     }
-  }, [])
+  }, []) 
 
   function isScrollIntoView(elem) {
     var docViewTop = $(window).scrollTop()
@@ -114,7 +109,7 @@ const Trip = ({
     <div
       id="container"
       className="container"
-      style={{ backgroundImage: `url(${mapImg})` }}
+      style={{ /* backgroundImage: `url(${mapImg})` */ }}
     >
       <h1 className="scroll-label" id="scroll-label">
         Scroll <Sprite id={'chevron-down'} width={22} height={22} />

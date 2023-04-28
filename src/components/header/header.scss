@@ -1,0 +1,18 @@
+.header {
+    position: fixed;
+    top: 0;
+    padding: 16px 64px;
+    backdrop-filter: blur(16px);
+    width: -webkit-fill-available;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .links {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        a {
+            cursor: pointer;
+        }
+    }
+}

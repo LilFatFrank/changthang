@@ -2,9 +2,11 @@
   background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
   background-repeat: no-repeat;
   background-attachment: fixed !important;
-  background-size: 100% 100% !important;
+  background-size: auto 100% !important;
   background-position: center top !important;
+  z-index: -1;
   position: relative;
+  padding-top: 50%;
   .scroll-label {
     font-family: GilroySemiBold;
     text-transform: uppercase;
@@ -16,7 +18,6 @@
     position: fixed;
     top: 50%;
   }
-  padding-top: 50%;
   .trip {
     .content {
       padding: 60px 150px;
@@ -30,7 +31,7 @@
           font-family: GilroySemiBold;
           margin-bottom: 16px;
           position: sticky;
-          top: 60px;
+          top: 120px;
           flex: 1 1 50%;
         }
         .overview {
@@ -95,10 +96,9 @@
           }
           .item {
             position: relative;
-            padding: 35px 0px 125px 158px;
+            padding: 0px 0px 125px 158px;
             &:last-child {
               margin-bottom: 0;
-              padding-top: 0;
               padding-bottom: 0;
             }
             .detail {
